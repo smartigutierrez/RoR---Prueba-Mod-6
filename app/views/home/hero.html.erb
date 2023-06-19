@@ -1,0 +1,25 @@
+<style>
+  .hero {
+    background-image: url('<%= asset_url('hero.png') %>');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    text-align: center;
+  }
+</style>
+
+<div class="hero">
+  <h1>¿Harto de tu trabajo estresante?</h1>
+  <br>
+  <br>
+  <h2>¡Entra y postula ya a una nueva vida!</h2>
+  <br>
+  <%= link_to 'Ver trabajos',   new_user_session_path , class: 'btn btn-warning' %>
+
+</div>
+
+

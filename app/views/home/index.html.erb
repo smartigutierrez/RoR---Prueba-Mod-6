@@ -1,0 +1,26 @@
+<h1 class="text-center">JobPosting</h1></h1>
+<p class="text-center">¡Postula ya a tu nueva aventura profesional!</p>
+
+
+<div class="container">
+  <% @posts.each_slice(3) do |post_slice| %>
+    <div class="row">
+      <% post_slice.each do |post| %>
+        <div class="col-md-4">
+          <div class="card mb-4 py-4;">
+            <%= image_tag(post.image) %>           
+              <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.description %></p>
+              <%= link_to "Leer oferta", post_path(post), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+    
+   <% if user_signed_in? && current_user.role == 'admin' %>
+  <%= link_to "Nueva oferta", new_post_path, class: "btn btn-primary btn-lg" %>
+<% end %>

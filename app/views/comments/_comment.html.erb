@@ -1,0 +1,17 @@
+<table class="table table-hover">
+  <tbody>
+    <% @post.comments.reverse_each do |comment| %>
+      <tr>
+        <td class="col-md-2">
+          <% if comment.user.avatar.attached? %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<%= render "comments/new", post: post%>

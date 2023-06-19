@@ -1,0 +1,51 @@
+<% if current_user.admin? %>
+  <h1>Todas las postulaciones</h1>
+<% else %>
+  <h1>Mis postulaciones</h1>
+<% end %>
+
+<table class="table table-hover">
+  <tbody>
+    <% if current_user.admin? %>
+      <% Comment.all.each do |comment| %>
+        <% post = comment.post %>
+        <tr>
+          <td class="col-md-2">
+            <% if comment.user.avatar.attached? %>
+              <%= image_tag comment.user.avatar, class: "w-50 h-50 rounded-circle avatar-image mx-auto d-block" %>
+            <% end %>
+          </td>
+          <td class="col-md-10">
+            <div class="post-info">
+              <strong>Trabajo:</strong> <%= post.title %>
+            </div>
+            <br>
+            <div class="comment-content">
+              <strong>Mensaje para la oferta:</strong> <%= comment.content %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <% current_user.comments.each do |comment| %>
+        <% post = comment.post %>
+        <tr>
+          <td class="col-md-2">
+            <% if comment.user.avatar.attached? %>
+              <%= image_tag comment.user.avatar, class: "w-50 h-50 rounded-circle avatar-image mx-auto d-block" %>
+            <% end %>
+          </td>
+          <td class="col-md-10">
+            <div class="post-info">
+              <strong>Trabajo:</strong> <%= post.title %>
+            </div>
+            <br>
+            <div class="comment-content">
+              <strong>Mensaje para la oferta:</strong> <%= comment.content %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
